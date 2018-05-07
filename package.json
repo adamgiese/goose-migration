@@ -7,7 +7,8 @@
   "author": "Adam Giese <adam.giese@gmail.com>",
   "license": "",
   "scripts": {
-    "start": "webpack-dev-server"
+    "start": "webpack-dev-server",
+    "lintfix": "eslint --fix . && eslint --ext jsx --fix ."
   },
   "dependencies": {
     "babel-core": "^6.25.0",
