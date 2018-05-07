@@ -1,6 +1,6 @@
-export const testAction = () => (
+export const toggleCompleted = () => (
   {
-    type: 'TEST_ACTION',
+    type: 'TOGGLE_COMPLETED',
   }
 );
 

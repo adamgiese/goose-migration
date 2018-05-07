@@ -1,30 +1,38 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { connect } from 'react-redux';
-import { testAction } from '../services/actions';
+import { toggleCompleted } from '../services/actions';
+import { austin, daytrips } from '../content/index';
+import TripList from './TripList.jsx';
 /* eslint-ensable no-unused-vars */
 
 const mapStateToProps = state => ({
-  hola: state.hola,
+  showCompleted: state.showCompleted,
 });
 
 const mapDispatchToProps = dispatch => ({
-  dispatchTestAction: () => {
-    dispatch(testAction());
+  dispatchToggleCompleted: () => {
+    dispatch(toggleCompleted());
   },
 });
 
 const App = (props) => {
   const {
-    hola,
-    dispatchTestAction,
+    showCompleted,
+    dispatchToggleCompleted,
   } = props;
+
   return (
     <div className='app'>
-      { hola ?
-        <h1 className='app-title'>Hola, {hola}!</h1>
-        : <button onClick={() => dispatchTestAction()}>Click Me</button>
-      }
+      <div>
+        <button onClick={() => dispatchToggleCompleted()}>
+          {showCompleted ? 'Hide' : 'Show'} Completed
+        </button>
+      </div>
+      <TripList
+        items={austin}
+        showCompleted={showCompleted}
+      />
     </div>
   );
 };

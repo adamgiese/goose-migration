@@ -1,8 +1,11 @@
 const handleActions = (state = [], action) => {
   const { type } = action;
   switch (type) {
-    case 'TEST_ACTION':
-      return { ...state, hola: 'mundo' };
+    case 'TOGGLE_COMPLETED':
+      return {
+        ...state,
+        showCompleted: !state.showCompleted,
+      };
     default:
       return state;
   }
