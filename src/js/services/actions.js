@@ -4,8 +4,15 @@ export const toggleCompleted = () => (
   }
 );
 
-export const testAnotherAction = () => (
+export const toggleDrawer = () => (
   {
-    type: 'TEST_ANOTHER_ACTION',
+    type: 'TOGGLE_DRAWER',
+  }
+);
+
+export const updateTab = payload => (
+  {
+    type: 'UPDATE_TAB',
+    payload,
   }
 );

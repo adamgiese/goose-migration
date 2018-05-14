@@ -5,6 +5,7 @@ import ReactDOM from 'react-dom';
 import WebFont from 'webfontloader';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose } from 'redux';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import App from './components/App.jsx';
 import initialState from './services/initialState';
 import reducer from './services/reducer';
@@ -15,7 +16,7 @@ require('./../scss/styles.scss');
 
 WebFont.load({
   google: {
-    families: ['Lato'],
+    families: ['Roboto'],
   },
 });
 
@@ -36,6 +37,8 @@ const store = createStore(
 // app init
 ReactDOM.render(
   <Provider store={store}>
-    <App />
+    <MuiThemeProvider>
+      <App />
+    </MuiThemeProvider>
   </Provider>
   , document.getElementById('root'));
