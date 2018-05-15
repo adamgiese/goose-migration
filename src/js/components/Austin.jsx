@@ -14,12 +14,12 @@ const Austin = (props) => {
     dispatchToggleCompleted,
   } = props;
 
-  console.log(selectedTab, showDrawer);
   const isSelected = selectedTab === 'austin';
+  const drawerOpen = isSelected && showDrawer;
 
   return (
     <div>
-      <Drawer open={isSelected && showDrawer}>
+      <Drawer open={drawerOpen}>
         <div className='toggles'>
           <Toggle
             onToggle={() => dispatchToggleCompleted()}
@@ -34,4 +34,5 @@ const Austin = (props) => {
     </div>
   );
 };
+
 export default Austin;
