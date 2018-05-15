@@ -14,6 +14,6 @@ export default function TripList(props) {
 
 
   return (
-    <div>{tripItems}</div>
+    <div className='trip-items'>{tripItems}</div>
   );
 }

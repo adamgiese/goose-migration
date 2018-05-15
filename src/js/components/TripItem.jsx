@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
+import { Card, CardActions, CardHeader, CardText } from 'material-ui/Card';
 /* eslint-ensable no-unused-vars */
 
 export default function TripItem(props) {
@@ -11,18 +12,23 @@ export default function TripItem(props) {
   } = props;
 
   const elements = {
-    title: <h3 className='item--title'>{title}</h3>,
+    title: <CardHeader
+      title={title}
+      subtitle={ description || null }
+    />,
 
-    description: description ? <p className='item--description'>{description}</p> : null,
 
     link: link ? <p className='item--cta'>
-      <a href={link}>View Site</a>
+      <a href={link} target='_blank'>View Site</a>
     </p> : null,
 
     activities: activities ? <ul>
       { activities.map(item =>
         <li>
-          {item.title}
+          { item.link ?
+            <a href={item.link} target='_blank'>
+              {item.title}
+            </a> : item.title }
         </li>
       ) }
     </ul> : null,
@@ -30,11 +36,12 @@ export default function TripItem(props) {
   };
 
   return (
-    <section className='trip-item'>
+    <Card className='trip-item'>
       {elements.title}
-      {elements.description}
-      {elements.activities}
-      {elements.link}
-    </section>
+      <CardText>
+        {elements.activities}
+        {elements.link}
+      </CardText>
+    </Card>
   );
 }

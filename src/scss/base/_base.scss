@@ -1,3 +1,4 @@
+
 *,
 *:before,
 *:after {
@@ -21,4 +22,26 @@ body {
   position: absolute;
   right: 2rem;
   bottom: 2rem;
+}
+
+.trip-items {
+  margin: 1rem auto 0;
+  padding: 1rem;
+  max-width: 100%;
+
+  @media screen and (min-width: 960px) {
+    padding: 0;
+    width: 1200px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 1rem;
+  }
+}
+
+.trip-item {
+  margin-bottom: 1rem;
+
+  @media screen and (min-width: 960px) {
+    margin-bottom: 0;
+  }
 }
