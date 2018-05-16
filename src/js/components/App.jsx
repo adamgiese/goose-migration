@@ -8,7 +8,8 @@ import CloseIcon from 'material-ui/svg-icons/navigation/close';
 import {
   toggleCompleted,
   toggleDrawer,
-  updateTab
+  updateTab,
+  toggleTagToFilter
 } from '../services/actions';
 import { austin, daytrips } from '../content/index';
 import Austin from './Austin.jsx';
@@ -18,11 +19,15 @@ const mapStateToProps = state => ({
   showCompleted: state.showCompleted,
   showDrawer: state.showDrawer,
   selectedTab: state.selectedTab,
+  tag_filter: state.tag_filter,
 });
 
 const mapDispatchToProps = dispatch => ({
   dispatchToggleCompleted: () => {
     dispatch(toggleCompleted());
+  },
+  dispatchToggleTagToFilter: (value) => {
+    dispatch(toggleTagToFilter(value));
   },
   dispatchToggleDrawer: () => {
     dispatch(toggleDrawer());
@@ -39,7 +44,9 @@ const App = (props) => {
     selectedTab,
     dispatchToggleCompleted,
     dispatchToggleDrawer,
+    dispatchToggleTagToFilter,
     dispatchUpdateTab,
+    tag_filter,
   } = props;
 
   return (

@@ -16,3 +16,10 @@ export const updateTab = payload => (
     payload,
   }
 );
+
+export const toggleTagToFilter = payload => (
+  {
+    type: 'TOGGLE_TAG_FILTER',
+    payload,
+  }
+);

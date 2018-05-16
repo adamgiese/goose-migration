@@ -3,7 +3,8 @@ import React from 'react';
 import Drawer from 'material-ui/Drawer';
 import Toggle from 'material-ui/Toggle';
 import Chip from 'material-ui/Chip';
-import { austin } from '../content/index';
+import { blue300 } from 'material-ui/styles/colors';
+import { austin } from '../content/index'; import tags from '../content/tags';
 import TripList from './TripList.jsx';
 /* eslint-ensable no-unused-vars */
 
@@ -13,20 +14,25 @@ const Austin = (props) => {
     showDrawer,
     selectedTab,
     dispatchToggleCompleted,
+    dispatchToggleTagToFilter,
+    tag_filter,
   } = props;
 
   const isSelected = selectedTab === 'austin';
   const drawerOpen = isSelected && showDrawer;
 
-  const uniqueTags = austin.reduce((acc, val) => {
-    const slugList = acc.map(tag => tag.slug);
-    const newTags = [...val.tags].filter(item => !slugList.includes(item.slug));
-    return [...acc, ...newTags];
-  }, []);
+  const filteredItems = austin.reduce((acc, item) => (
+    tag_filter.every(tag => item.tags.includes(tag)) || tag_filter.length === 0 ? [...acc, item] : acc
+  ), []);
 
-  const tagChips = uniqueTags.map(tag => (
+  const austinTags = // create array of unique tags from all activities
+    Array.from(new Set(filteredItems.reduce((acc, val) => ([...acc, ...val.tags]), [])))
+      .reduce((acc, val) => ([...acc, tags.find(tag => tag.slug === val)]), []);
+
+  const tagChips = austinTags.map(tag => (
     <Chip
-      onClick={() => { console.log(`You have clicked: ${tag.slug}`); } }
+      onClick={() => { dispatchToggleTagToFilter(tag.slug); } }
+      backgroundColor={tag_filter.includes(tag.slug) ? blue300 : null}
     >{tag.title}</Chip>
   ));
 
@@ -44,7 +50,7 @@ const Austin = (props) => {
         </div>
       </Drawer>
       <TripList
-        items={austin}
+        items={filteredItems}
         showCompleted={showCompleted}
       />
     </div>

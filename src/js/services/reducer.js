@@ -11,6 +11,13 @@ const handleActions = (state = [], action) => {
         ...state,
         showDrawer: !state.showDrawer,
       };
+    case 'TOGGLE_TAG_FILTER':
+      return {
+        ...state,
+        tag_filter: state.tag_filter.includes(payload)
+          ? state.tag_filter.filter(tag => tag !== payload)
+          : [...state.tag_filter, payload],
+      };
     case 'UPDATE_TAB':
       return {
         ...state,

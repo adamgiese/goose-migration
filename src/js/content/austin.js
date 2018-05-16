@@ -1,12 +1,10 @@
-import tags from './tags';
-
 const austin = [
   {
     title: 'The Domain',
     description: 'Upscale retail and dining',
     tags: [
-      tags.shopping,
-      tags.outdoors,
+      'shopping',
+      'outdoors',
     ],
     link: 'http://www.simon.com/mall/the-domain',
     completed: true,
@@ -14,8 +12,8 @@ const austin = [
   {
     title: 'Umlauf Sculpture Garden',
     tags: [
-      tags.art,
-      tags.outdoors,
+      'art',
+      'outdoors',
     ],
     link: 'http://www.umlaufsculpture.org/',
     completed: false,
@@ -23,8 +21,8 @@ const austin = [
   {
     title: 'The Market District',
     tags: [
-      tags.shopping,
-      tags.outdoors,
+      'shopping',
+      'outdoors',
     ],
     link: 'https://www.mapsofaustin.com/market-district',
     completed: false,
@@ -33,8 +31,8 @@ const austin = [
     title: 'Spoil Dog Day',
     completed: false,
     tags: [
-      tags.dogFriendly,
-      tags.outdoors,
+      'dog-friendly',
+      'outdoors',
     ],
     activities: [
       {
