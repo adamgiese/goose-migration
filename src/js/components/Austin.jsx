@@ -4,7 +4,8 @@ import Drawer from 'material-ui/Drawer';
 import Toggle from 'material-ui/Toggle';
 import Chip from 'material-ui/Chip';
 import { blue300 } from 'material-ui/styles/colors';
-import { austin } from '../content/index'; import tags from '../content/tags';
+import { austin } from '../content/index';
+import tags from '../content/tags';
 import TripList from './TripList.jsx';
 /* eslint-ensable no-unused-vars */
 
