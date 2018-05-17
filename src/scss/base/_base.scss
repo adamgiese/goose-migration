@@ -13,6 +13,15 @@ body {
   position: relative;
 }
 
+ul {
+  padding-left: 1rem;
+  margin-bottom: 1rem;
+}
+
+li {
+  margin-bottom: .5rem;
+}
+
 .app {
   min-height: 100vh;
   position: relative;
