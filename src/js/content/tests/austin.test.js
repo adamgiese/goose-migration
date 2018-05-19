@@ -11,7 +11,6 @@ const flattenTags = flattenArrayAtKey('tags');
 const flattenSlugs = getArrayFromKey('slug');
 
 test('all tags exist', () => {
-  //const austinTags = removeDuplicates(austin.reduce((acc, activity) => ([...acc, ...activity.tags]), []));
   const austinTags = austin
     .reduce(flattenTags, [])
     .reduce(removeDuplicates, []);
