@@ -6,6 +6,5 @@ const {
 
 test('removeDuplicates', () => {
   const testArray = [1,2,3,4,5,1,2,3,4,5];
-  const dedupedArray = removeDuplicates(testArray);
-  expect(dedupedArray).toEqual([1,2,3,4,5]);
+  expect(testArray.reduce(removeDuplicates, [])).toEqual([1,2,3,4,5]);
 })

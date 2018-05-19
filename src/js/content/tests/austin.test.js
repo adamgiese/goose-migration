@@ -1,10 +1,20 @@
 // const { austin, tags } = require('../index.js');
 import { austin, tags } from '../index.js';
 import { array } from '../../utils';
-const { removeDuplicates } = array;
+const {
+  removeDuplicates,
+  flattenArrayAtKey,
+  getArrayFromKey,
+} = array;
+
+const flattenTags = flattenArrayAtKey('tags');
+const flattenSlugs = getArrayFromKey('slug');
 
 test('all tags exist', () => {
-  const austinTags = removeDuplicates(austin.reduce((acc, activity) => ([...acc, ...activity.tags]), []));
-  const slugs = tags.reduce((acc, tag) => [...acc, tag.slug], []);
+  //const austinTags = removeDuplicates(austin.reduce((acc, activity) => ([...acc, ...activity.tags]), []));
+  const austinTags = austin
+    .reduce(flattenTags, [])
+    .reduce(removeDuplicates, []);
+  const slugs = tags.reduce(flattenSlugs, []);
   expect( austinTags.every(tag => slugs.includes(tag))).toBeTruthy();
 })
