@@ -15,5 +15,14 @@ test('all tags exist', () => {
     .reduce(flattenTags, [])
     .reduce(removeDuplicates, []);
   const slugs = tags.reduce(flattenSlugs, []);
-  expect( austinTags.every(tag => slugs.includes(tag))).toBeTruthy();
+  expect(
+    austinTags.every(tag => {
+      const matchesFilter = slugs.includes(tag);
+      if (!matchesFilter) {
+        console.log(`${tag} is missing from 'js/content/tags'`);
+      }
+
+      return matchesFilter;
+    })
+  ).toBeTruthy();
 })

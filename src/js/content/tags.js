@@ -4,12 +4,24 @@ const tags = [
     slug: 'shopping',
   },
   {
+    title: 'Museum',
+    slug: 'museum',
+  },
+  {
+    title: 'History Museum',
+    slug: 'museum--history',
+  },
+  {
     title: 'Art',
     slug: 'art',
   },
   {
     title: 'Outdoors',
     slug: 'outdoors',
+  },
+  {
+    title: 'Indoors',
+    slug: 'indoors',
   },
   {
     title: 'Dog Friendly',
