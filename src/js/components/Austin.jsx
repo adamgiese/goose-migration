@@ -9,6 +9,12 @@ import tags from '../content/tags';
 import TripList from './TripList.jsx';
 /* eslint-ensable no-unused-vars */
 
+const styles = {
+  chip: {
+    margin: 4,
+  },
+};
+
 const Austin = (props) => {
   const {
     showCompleted,
@@ -34,20 +40,23 @@ const Austin = (props) => {
     <Chip
       onClick={() => { dispatchToggleTagToFilter(tag.slug); } }
       backgroundColor={tag_filter.includes(tag.slug) ? blue300 : null}
+      style={styles.chip}
     >{tag.title}</Chip>
   ));
 
   return (
     <div>
       <Drawer open={drawerOpen}>
-        <div className='toggles'>
-          <Toggle
-            onToggle={() => dispatchToggleCompleted()}
-            label={showCompleted ? 'Hide Completed' : 'Show Completed'}
-          />
-        </div>
-        <div className='tags'>
-          { tagChips }
+        <div className='drawer'>
+          <div className='toggles'>
+            <Toggle
+              onToggle={() => dispatchToggleCompleted()}
+              label={showCompleted ? 'Hide Completed' : 'Show Completed'}
+            />
+          </div>
+          <div className='tags'>
+            { tagChips }
+          </div>
         </div>
       </Drawer>
       <TripList
