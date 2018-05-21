@@ -14,6 +14,9 @@ test('toUnique', () => {
 test('toFlatten', () => {
   const array = [[1, 2, 3], [4, 5, 6]];
   expect(array.reduce(toFlatten)).toEqual([1, 2, 3, 4, 5, 6]);
+
+  const deepArray = [[[1,2],[3,4]],[[5,6],[7,8]]];
+  expect(deepArray.reduce(toFlatten).reduce(toFlatten)).toEqual([1,2,3,4,5,6,7,8]);
 });
 
 test('toValueAtKey', () => {
