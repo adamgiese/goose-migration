@@ -4,8 +4,8 @@ import { array } from '../../utils';
 
 const {
   toValueAtKey,
-  isUnique,
-  flatten,
+  toUnique,
+  toFlatten,
 } = array;
 
 const toTags = toValueAtKey('tags');
@@ -14,8 +14,8 @@ const toSlug = toValueAtKey('slug');
 test('all tags exist', () => {
   const austinTags = austin
     .map(toTags)
-    .reduce(flatten)
-    .filter(isUnique);
+    .reduce(toFlatten)
+    .filter(toUnique);
   const slugs = tags.map(toSlug);
 
   expect(

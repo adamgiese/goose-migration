@@ -1,19 +1,19 @@
 const {
   array: {
-    flatten,
+    toFlatten,
     toValueAtKey,
-    isUnique,
+    toUnique,
   },
 } = require('../index.js');
 
-test('isUnique', () => {
+test('toUnique', () => {
   const array = [1, 2, 3, 4, 5, 1, 2, 3, 4, 5];
-  expect(array.filter(isUnique)).toEqual([1, 2, 3, 4, 5]);
+  expect(array.filter(toUnique)).toEqual([1, 2, 3, 4, 5]);
 });
 
-test('flatten', () => {
+test('toFlatten', () => {
   const array = [[1, 2, 3], [4, 5, 6]];
-  expect(array.reduce(flatten)).toEqual([1, 2, 3, 4, 5, 6]);
+  expect(array.reduce(toFlatten)).toEqual([1, 2, 3, 4, 5, 6]);
 });
 
 test('toValueAtKey', () => {

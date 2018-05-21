@@ -1,6 +1,6 @@
 // reducers
 
-export function flatten(acc, value) {
+export function toFlatten(acc, value) {
   return [...acc, ...value];
 }
 
@@ -14,14 +14,14 @@ export function toValueAtKey(key) {
 
 // filters
 
-export function isUnique(element, index, array) {
+export function toUnique(element, index, array) {
   return array.indexOf(element) === index;
 }
 
 // export
 
 export default {
-  isUnique,
+  toUnique,
   toValueAtKey,
-  flatten,
+  toFlatten,
 };
