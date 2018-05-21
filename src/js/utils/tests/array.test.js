@@ -3,6 +3,7 @@ const {
     toFlatten,
     toValueAtKey,
     toUnique,
+    toObjectWithValueAtKey,
   },
 } = require('../index.js');
 
@@ -26,4 +27,28 @@ test('toValueAtKey', () => {
     { name: 'Eve' },
   ];
   expect(array.map(toName)).toEqual(['Adam', 'Eve']);
+});
+
+test('toObjectWithValueAtKey', () => {
+  const beatles = [
+    {
+      id: 1,
+      name: 'John Lennon',
+    },
+    {
+      id: 2,
+      name: 'Paul McCartney',
+    },
+    {
+      id: 3,
+      name: 'George Harrison',
+    },
+    {
+      id: 4,
+      name: 'Ringo Starr',
+    }
+  ];
+  const ids = [1,2,3,4];
+  const toBeatlesWithId = toObjectWithValueAtKey(beatles, 'id');
+  expect(ids.map(toBeatlesWithId)).toEqual(beatles)
 });

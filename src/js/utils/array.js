@@ -10,6 +10,10 @@ export function toValueAtKey(key) {
   return value => value[key];
 }
 
+export function toObjectWithValueAtKey(array, key) {
+  return value => array.find(item => item[key] === value);
+}
+
 // filters
 
 export function toUnique(element, index, array) {
@@ -22,4 +26,5 @@ export default {
   toUnique,
   toValueAtKey,
   toFlatten,
+  toObjectWithValueAtKey,
 };

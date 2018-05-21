@@ -6,11 +6,17 @@ import Chip from 'material-ui/Chip';
 import { blue300 } from 'material-ui/styles/colors';
 import { austin } from '../content/index';
 import tags from '../content/tags';
-import { toValueAtKey, toUnique, toFlatten } from '../utils/array';
+import {
+  toFlatten,
+  toObjectWithValueAtKey,
+  toUnique,
+  toValueAtKey
+} from '../utils/array';
 import TripList from './TripList.jsx';
 /* eslint-ensable no-unused-vars */
 
 const toTags = toValueAtKey('tags');
+const toTagWithSlug = toObjectWithValueAtKey(tags, 'slug');
 
 const styles = {
   chip: {
@@ -41,7 +47,7 @@ const Austin = (props) => {
     .map(toTags)
     .reduce(toFlatten)
     .filter(toUnique)
-    .map(value => tags.find(tag => tag.slug === value));
+    .map(toTagWithSlug);
 
 
   const tagChips = austinTags.map(tag => (
