@@ -7,9 +7,7 @@ export function toFlatten(acc, value) {
 // map
 
 export function toValueAtKey(key) {
-  return function (value) {
-    return value[key];
-  };
+  return value => value[key];
 }
 
 // filters
