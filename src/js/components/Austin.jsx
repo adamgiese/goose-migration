@@ -6,8 +6,11 @@ import Chip from 'material-ui/Chip';
 import { blue300 } from 'material-ui/styles/colors';
 import { austin } from '../content/index';
 import tags from '../content/tags';
+import { toValueAtKey, isUnique, flatten } from '../utils/array';
 import TripList from './TripList.jsx';
 /* eslint-ensable no-unused-vars */
+
+const toTags = toValueAtKey('tags');
 
 const styles = {
   chip: {
@@ -28,13 +31,18 @@ const Austin = (props) => {
   const isSelected = selectedTab === 'austin';
   const drawerOpen = isSelected && showDrawer;
 
-  const filteredItems = austin.reduce((acc, item) => (
-    tag_filter.every(tag => item.tags.includes(tag)) || tag_filter.length === 0 ? [...acc, item] : acc
-  ), []);
+  const filteredItems = tag_filter.length === 0
+    ? austin
+    : austin.reduce((acc, item) => (
+      tag_filter.every(tag => item.tags.includes(tag)) ? [...acc, item] : acc
+    ), []);
 
-  const austinTags = // create array of unique tags from all activities
-    Array.from(new Set(filteredItems.reduce((acc, val) => ([...acc, ...val.tags]), [])))
-      .reduce((acc, val) => ([...acc, tags.find(tag => tag.slug === val)]), []);
+  const austinTags = filteredItems
+    .map(toTags)
+    .reduce(flatten)
+    .filter(isUnique)
+    .map(value => tags.find(tag => tag.slug === value));
+
 
   const tagChips = austinTags.map(tag => (
     <Chip

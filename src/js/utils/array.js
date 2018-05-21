@@ -1,23 +1,27 @@
 // reducers
 
-function removeDuplicates(acc, item) {
-  return acc.includes(item) ? [...acc] : [...acc, item];
+export function flatten(acc, value) {
+  return [...acc, ...value];
 }
 
-function flattenArrayAtKey(key) {
-  return function (acc,item) {
-    return [...acc, ...item[key]]
-  }
+// map
+
+export function toValueAtKey(key) {
+  return function (value) {
+    return value[key];
+  };
 }
 
-function getArrayFromKey(key) {
-  return function (acc,item) {
-    return [...acc, item[key]]
-  }
+// filters
+
+export function isUnique(element, index, array) {
+  return array.indexOf(element) === index;
 }
+
+// export
 
 export default {
-  removeDuplicates,
-  flattenArrayAtKey,
-  getArrayFromKey,
-}
+  isUnique,
+  toValueAtKey,
+  flatten,
+};

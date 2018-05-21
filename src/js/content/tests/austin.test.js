@@ -1,22 +1,25 @@
 // const { austin, tags } = require('../index.js');
 import { austin, tags } from '../index.js';
 import { array } from '../../utils';
+
 const {
-  removeDuplicates,
-  flattenArrayAtKey,
-  getArrayFromKey,
+  toValueAtKey,
+  isUnique,
+  flatten,
 } = array;
 
-const flattenTags = flattenArrayAtKey('tags');
-const flattenSlugs = getArrayFromKey('slug');
+const toTags = toValueAtKey('tags');
+const toSlug = toValueAtKey('slug');
 
 test('all tags exist', () => {
   const austinTags = austin
-    .reduce(flattenTags, [])
-    .reduce(removeDuplicates, []);
-  const slugs = tags.reduce(flattenSlugs, []);
+    .map(toTags)
+    .reduce(flatten)
+    .filter(isUnique);
+  const slugs = tags.map(toSlug);
+
   expect(
-    austinTags.every(tag => {
+    austinTags.every((tag) => {
       const matchesFilter = slugs.includes(tag);
       if (!matchesFilter) {
         console.log(`${tag} is missing from 'js/content/tags'`);
@@ -25,4 +28,4 @@ test('all tags exist', () => {
       return matchesFilter;
     })
   ).toBeTruthy();
-})
+});
