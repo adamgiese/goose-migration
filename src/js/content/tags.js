@@ -27,6 +27,10 @@ const tags = [
     title: 'Dog Friendly',
     slug: 'dog-friendly',
   },
+  {
+    title: 'Alcohol',
+    slug: 'alcohol',
+  },
 ];
 
 export default tags;
