@@ -24,6 +24,10 @@ export function toObjects(element) {
   return typeof element === 'object' && !Array.isArray(element);
 }
 
+export function toArrays(element) {
+  return Array.isArray(element);
+}
+
 // export
 
 export default {
@@ -32,4 +36,5 @@ export default {
   toFlatten,
   toObjectWithValueAtKey,
   toObjects,
+  toArrays,
 };

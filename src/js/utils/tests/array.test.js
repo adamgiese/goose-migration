@@ -5,6 +5,7 @@ const {
     toUnique,
     toObjectWithValueAtKey,
     toObjects,
+    toArrays,
   },
 } = require('../index.js');
 
@@ -71,4 +72,20 @@ test('toObjects', () => {
 
   const arrayOfOnlyObjects = arrayOfMostlyObjects.filter(toObjects);
   expect(arrayOfOnlyObjects).toEqual(beatles);
+});
+
+test('toArrays', () => {
+  const listsOfListsOfNumbers = [
+    [1,2,3],
+    [4,5,6],
+    [7,8,9],
+  ];
+  const listsOfNumbersAndLists = [
+    ...listsOfListsOfNumbers,
+    10, 11, 12
+  ]
+
+  const filteredList = listsOfNumbersAndLists.filter(toArrays);
+
+  expect(filteredList).toEqual(listsOfListsOfNumbers);
 });

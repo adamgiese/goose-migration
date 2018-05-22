@@ -11,7 +11,8 @@ import {
   toObjectWithValueAtKey,
   toUnique,
   toValueAtKey,
-  toObjects
+  toObjects,
+  toArrays
 } from '../utils/array';
 import TripList from './TripList.jsx';
 /* eslint-ensable no-unused-vars */
@@ -46,6 +47,7 @@ const Austin = (props) => {
 
   const austinTags = filteredItems
     .map(toTags)
+    .filter(toArrays)
     .reduce(toFlatten)
     .filter(toUnique)
     .map(toTagWithSlug)
