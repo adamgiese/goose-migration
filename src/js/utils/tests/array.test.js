@@ -4,6 +4,7 @@ const {
     toValueAtKey,
     toUnique,
     toObjectWithValueAtKey,
+    toObjects,
   },
 } = require('../index.js');
 
@@ -51,4 +52,23 @@ test('toObjectWithValueAtKey', () => {
   const ids = [1,2,3,4];
   const toBeatlesWithId = toObjectWithValueAtKey(beatles, 'id');
   expect(ids.map(toBeatlesWithId)).toEqual(beatles)
+});
+
+test('toObjects', () => {
+  const beatles = [
+    { name: 'John' },
+    { name: 'Paul' },
+    { name: 'George' },
+    { name: 'Ringo' },
+  ];
+
+  const arrayOfMostlyObjects = [
+    ...beatles,
+    'string',
+    1,
+    [ 'array', 'of', 'words' ],
+  ];
+
+  const arrayOfOnlyObjects = arrayOfMostlyObjects.filter(toObjects);
+  expect(arrayOfOnlyObjects).toEqual(beatles);
 });

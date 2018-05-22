@@ -20,6 +20,10 @@ export function toUnique(element, index, array) {
   return array.indexOf(element) === index;
 }
 
+export function toObjects(element) {
+  return typeof element === 'object' && !Array.isArray(element);
+}
+
 // export
 
 export default {
@@ -27,4 +31,5 @@ export default {
   toValueAtKey,
   toFlatten,
   toObjectWithValueAtKey,
+  toObjects,
 };
