@@ -36,14 +36,10 @@ const Austin = (props) => {
     tag_filter,
   } = props;
 
-  const isSelected = selectedTab === 'austin';
-  const drawerOpen = isSelected && showDrawer;
+  const isDrawerOpen = selectedTab === 'austin' && showDrawer;
 
-  const filteredItems = tag_filter.length === 0
-    ? austin
-    : austin.reduce((acc, item) => (
-      tag_filter.every(tag => item.tags.includes(tag)) ? [...acc, item] : acc
-    ), []);
+  const toHasAllTags = element => tag_filter.every(tag => element.tags.includes(tag));
+  const filteredItems = tag_filter.length === 0 ? austin : austin.filter(toHasAllTags);
 
   const austinTags = filteredItems
     .map(toTags)
@@ -63,7 +59,7 @@ const Austin = (props) => {
 
   return (
     <div>
-      <Drawer open={drawerOpen}>
+      <Drawer open={isDrawerOpen}>
         <div className='drawer'>
           <div className='toggles'>
             <Toggle
