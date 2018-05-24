@@ -6,10 +6,13 @@ import Chip from 'material-ui/Chip';
 import { blue300 } from 'material-ui/styles/colors';
 import { austin } from '../content/index';
 import tags from '../content/tags';
+import groups from '../content/groups';
 import {
   toFlatten,
   toObjectWithValueAtKey,
+  toObjectsWithValueAtKey,
   toUnique,
+  toTruthy,
   toValueAtKey,
   toObjects,
   toArrays
@@ -18,7 +21,9 @@ import TripList from './TripList.jsx';
 /* eslint-ensable no-unused-vars */
 
 const toTags = toValueAtKey('tags');
+const toGroup = toValueAtKey('group');
 const toTagWithSlug = toObjectWithValueAtKey(tags, 'slug');
+const toGroupWithSlug = toObjectWithValueAtKey(groups, 'slug');
 
 const styles = {
   chip: {
@@ -36,6 +41,14 @@ const Austin = (props) => {
     tag_filter,
   } = props;
 
+  const toChips = tag => (
+    <Chip
+      onClick={() => { dispatchToggleTagToFilter(tag.slug); } }
+      backgroundColor={tag_filter.includes(tag.slug) ? blue300 : null}
+      style={styles.chip}
+    >{tag.title}</Chip>
+  );
+
   const isDrawerOpen = selectedTab === 'austin' && showDrawer;
 
   const toHasAllTags = element => tag_filter.every(tag => element.tags.includes(tag));
@@ -49,13 +62,11 @@ const Austin = (props) => {
     .map(toTagWithSlug)
     .filter(toObjects);
 
-  const tagChips = austinTags.map(tag => (
-    <Chip
-      onClick={() => { dispatchToggleTagToFilter(tag.slug); } }
-      backgroundColor={tag_filter.includes(tag.slug) ? blue300 : null}
-      style={styles.chip}
-    >{tag.title}</Chip>
-  ));
+
+  const austinGroups = austinTags
+    .map(toGroup)
+    .filter(toUnique)
+    .map(toGroupWithSlug);
 
   return (
     <div>
@@ -67,8 +78,16 @@ const Austin = (props) => {
               label={showCompleted ? 'Hide Completed' : 'Show Completed'}
             />
           </div>
-          <div className='tags'>
-            { tagChips }
+          <div className='tags-container'>
+            { austinGroups.map((group) => {
+              const toThisGroup = toObjectsWithValueAtKey(group.slug, 'group');
+              const tagsInGroup = austinTags.filter(toThisGroup).map(toChips);
+
+              return <div key={group.slug}>
+                <h3>{group.title}</h3>
+                <div className='tags'>{tagsInGroup}</div>
+              </div>;
+            })}
           </div>
         </div>
       </Drawer>

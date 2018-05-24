@@ -4,6 +4,7 @@ const museum = [
     tags: [
       'art',
       'museum',
+      'museum--art',
       'outdoors',
     ],
     link: 'http://www.umlaufsculpture.org/',

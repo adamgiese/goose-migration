@@ -6,10 +6,17 @@ const tags = [
   {
     title: 'Museum',
     slug: 'museum',
+    group: 'museums',
   },
   {
     title: 'History Museum',
     slug: 'museum--history',
+    group: 'museums',
+  },
+  {
+    title: 'Art Museum',
+    slug: 'museum--art',
+    group: 'museums',
   },
   {
     title: 'Art',
