@@ -41,7 +41,7 @@ const Austin = (props) => {
   const toHasAllTags = element => tag_filter.every(tag => element.tags.includes(tag));
   const filteredItems = tag_filter.length === 0 ? austin : austin.filter(toHasAllTags);
 
-  const austinTags = filteredItems
+  const austinTags = austin
     .map(toTags)
     .filter(toArrays)
     .reduce(toFlatten)
