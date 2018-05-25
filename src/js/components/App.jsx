@@ -43,6 +43,7 @@ const App = (props) => {
 
   return (
     <div className='app'>
+      <h1>Austin Activities</h1>
       <Austin {...props} />
 
       <FloatingActionButton className='menuToggle' onClick={dispatchToggleDrawer}>
