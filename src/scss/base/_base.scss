@@ -24,11 +24,10 @@ li {
 
 .app {
   min-height: 100vh;
-  position: relative;
 }
 
 .menuToggle {
-  position: absolute;
+  position: fixed;
   right: 2rem;
   bottom: 2rem;
 }
