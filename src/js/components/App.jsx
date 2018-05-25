@@ -1,14 +1,12 @@
 /* eslint-disable no-unused-vars */
 import React from 'react';
 import { connect } from 'react-redux';
-import { Tabs, Tab } from 'material-ui/Tabs';
 import FloatingActionButton from 'material-ui/FloatingActionButton';
 import MenuIcon from 'material-ui/svg-icons/navigation/menu';
 import CloseIcon from 'material-ui/svg-icons/navigation/close';
 import {
   toggleCompleted,
   toggleDrawer,
-  updateTab,
   toggleTagToFilter
 } from '../services/actions';
 import { austin, daytrips } from '../content/index';
@@ -18,7 +16,6 @@ import Austin from './Austin.jsx';
 const mapStateToProps = state => ({
   showCompleted: state.showCompleted,
   showDrawer: state.showDrawer,
-  selectedTab: state.selectedTab,
   tag_filter: state.tag_filter,
 });
 
@@ -32,46 +29,21 @@ const mapDispatchToProps = dispatch => ({
   dispatchToggleDrawer: () => {
     dispatch(toggleDrawer());
   },
-  dispatchUpdateTab: (value) => {
-    dispatch(updateTab(value));
-  },
 });
 
 const App = (props) => {
   const {
     showCompleted,
     showDrawer,
-    selectedTab,
     dispatchToggleCompleted,
     dispatchToggleDrawer,
     dispatchToggleTagToFilter,
-    dispatchUpdateTab,
     tag_filter,
   } = props;
 
   return (
     <div className='app'>
-      <Tabs className='tabs' onChange={dispatchUpdateTab}>
-        <Tab label='Austin' value='austin'>
-          <Austin {...props} />
-        </Tab>
-        <Tab label='Day Trip' value='day-trip'>
-          Coming Soon!
-          Ideas include:
-            - Bastrop, TX
-            - Lockhart, TX
-        </Tab>
-        <Tab label='Weekend Getaway' value='weekend-getaway'>
-          Coming Soon!
-          Ideas include:
-            - Pasadena, TX
-        </Tab>
-        <Tab label='Vacations' value='vacation'>
-          Coming Soon!
-          Ideas include:
-            - Disney Cruise
-        </Tab>
-      </Tabs>
+      <Austin {...props} />
 
       <FloatingActionButton className='menuToggle' onClick={dispatchToggleDrawer}>
         { showDrawer ? <CloseIcon /> : <MenuIcon /> }

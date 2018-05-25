@@ -23,4 +23,5 @@ const austin = [
     ],
   },
 ];
-export default austin;
+
+export default austin.map(item => ({ ...item, tags: [...item.tags, 'local'] }));

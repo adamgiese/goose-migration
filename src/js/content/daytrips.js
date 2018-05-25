@@ -3,6 +3,7 @@ const daytrips = [
     title: 'Lockhart',
     completed: false,
     description: 'Barbecue capital of Texas.',
+    tags: ['short-drive'],
     activities: [
       {
         title: 'Lockhart State Park',
@@ -18,6 +19,7 @@ const daytrips = [
     title: 'Bastrop',
     completed: false,
     description: 'Heart of the Lost Pines',
+    tags: ['short-drive'],
     activities: [
       {
         title: 'Bastrop State Park',
@@ -34,4 +36,5 @@ const daytrips = [
     ],
   },
 ];
-export default daytrips;
+
+export default daytrips.map(item => ({ ...item, tags: [...item.tags, 'daytrip'] }));

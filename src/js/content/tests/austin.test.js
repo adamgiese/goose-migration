@@ -1,5 +1,5 @@
-// const { austin, tags } = require('../index.js');
-import { austin, tags } from '../index.js';
+import activities from '../index';
+import tags from '../tags';
 import { array } from '../../utils';
 
 const {
@@ -12,7 +12,7 @@ const toTags = toValueAtKey('tags');
 const toSlug = toValueAtKey('slug');
 
 test('all tags exist', () => {
-  const austinTags = austin
+  const austinTags = activities
     .map(toTags)
     .reduce(toFlatten)
     .filter(toUnique);

@@ -4,7 +4,7 @@ import Drawer from 'material-ui/Drawer';
 import Toggle from 'material-ui/Toggle';
 import Chip from 'material-ui/Chip';
 import { blue300 } from 'material-ui/styles/colors';
-import { austin } from '../content/index';
+import activities from '../content/index';
 import tags from '../content/tags';
 import groups from '../content/groups';
 import {
@@ -35,7 +35,6 @@ const Austin = (props) => {
   const {
     showCompleted,
     showDrawer,
-    selectedTab,
     dispatchToggleCompleted,
     dispatchToggleTagToFilter,
     tag_filter,
@@ -49,19 +48,16 @@ const Austin = (props) => {
     >{tag.title}</Chip>
   );
 
-  const isDrawerOpen = selectedTab === 'austin' && showDrawer;
-
   const toHasAllTags = element => tag_filter.every(tag => element.tags.includes(tag));
-  const filteredItems = tag_filter.length === 0 ? austin : austin.filter(toHasAllTags);
+  const filteredItems = tag_filter.length === 0 ? activities : activities.filter(toHasAllTags);
 
-  const austinTags = austin
+  const austinTags = activities
     .map(toTags)
     .filter(toArrays)
     .reduce(toFlatten)
     .filter(toUnique)
     .map(toTagWithSlug)
     .filter(toObjects);
-
 
   const austinGroups = austinTags
     .map(toGroup)
@@ -70,7 +66,7 @@ const Austin = (props) => {
 
   return (
     <div>
-      <Drawer open={isDrawerOpen}>
+      <Drawer open={showDrawer}>
         <div className='drawer'>
           <div className='toggles'>
             <Toggle

@@ -38,6 +38,21 @@ const tags = [
     title: 'Alcohol',
     slug: 'alcohol',
   },
+  {
+    title: 'Short Drive',
+    slug: 'short-drive',
+    group: 'distance',
+  },
+  {
+    title: 'Local',
+    slug: 'local',
+    group: 'category',
+  },
+  {
+    title: 'Daytrip',
+    slug: 'daytrip',
+    group: 'category',
+  },
 ];
 
 export default tags;
