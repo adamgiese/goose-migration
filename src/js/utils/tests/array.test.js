@@ -49,7 +49,6 @@ test('toObjectsWithValueAtKey', () => {
   const musicians = [...beatles, ...stones];
   const isInTheBetterBand = toObjectsWithValueAtKey('The Beatles', 'band');
   expect(musicians.filter(isInTheBetterBand)).toEqual(beatles);
-
 });
 
 test('toUnique', () => {
@@ -61,8 +60,8 @@ test('toFlatten', () => {
   const array = [[1, 2, 3], [4, 5, 6]];
   expect(array.reduce(toFlatten)).toEqual([1, 2, 3, 4, 5, 6]);
 
-  const deepArray = [[[1,2],[3,4]],[[5,6],[7,8]]];
-  expect(deepArray.reduce(toFlatten).reduce(toFlatten)).toEqual([1,2,3,4,5,6,7,8]);
+  const deepArray = [[[1, 2], [3, 4]], [[5, 6], [7, 8]]];
+  expect(deepArray.reduce(toFlatten).reduce(toFlatten)).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
 });
 
 test('toValueAtKey', () => {
@@ -91,11 +90,11 @@ test('toObjectWithValueAtKey', () => {
     {
       id: 4,
       name: 'Ringo Starr',
-    }
+    },
   ];
-  const ids = [1,2,3,4];
+  const ids = [1, 2, 3, 4];
   const toBeatlesWithId = toObjectWithValueAtKey(beatles, 'id');
-  expect(ids.map(toBeatlesWithId)).toEqual(beatles)
+  expect(ids.map(toBeatlesWithId)).toEqual(beatles);
 });
 
 test('toObjects', () => {
@@ -110,7 +109,7 @@ test('toObjects', () => {
     ...beatles,
     'string',
     1,
-    [ 'array', 'of', 'words' ],
+    ['array', 'of', 'words'],
   ];
 
   const arrayOfOnlyObjects = arrayOfMostlyObjects.filter(toObjects);
@@ -119,14 +118,14 @@ test('toObjects', () => {
 
 test('toArrays', () => {
   const listsOfListsOfNumbers = [
-    [1,2,3],
-    [4,5,6],
-    [7,8,9],
+    [1, 2, 3],
+    [4, 5, 6],
+    [7, 8, 9],
   ];
   const listsOfNumbersAndLists = [
     ...listsOfListsOfNumbers,
-    10, 11, 12
-  ]
+    10, 11, 12,
+  ];
 
   const filteredList = listsOfNumbersAndLists.filter(toArrays);
 
