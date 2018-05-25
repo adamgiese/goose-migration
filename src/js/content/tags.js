@@ -9,6 +9,11 @@ const tags = [
     group: 'museums',
   },
   {
+    title: 'Children\'s Museum',
+    slug: 'museum--childrens',
+    group: 'museums',
+  },
+  {
     title: 'History Museum',
     slug: 'museum--history',
     group: 'museums',
