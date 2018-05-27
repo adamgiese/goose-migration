@@ -1,5 +1,6 @@
 const {
   array: {
+    alphabeticallyAtKey,
     toFlatten,
     toValueAtKey,
     toUnique,
@@ -149,4 +150,34 @@ test('toTruthy', () => {
   const allItems = [...listOfFalsyItems, ...listOfTruthyItems];
 
   expect(allItems.filter(toTruthy)).toEqual(listOfTruthyItems);
+});
+
+test('alphabeticallyAtKey', () => {
+  const byName = alphabeticallyAtKey('name');
+  const unordered = [
+    { name: 'p' },
+    { name: 'e' },
+    { name: 't' },
+    { name: 'r' },
+    { name: 'i' },
+    { name: 'c' },
+    { name: 'h' },
+    { name: 'o' },
+    { name: 'r' },
+  ];
+
+  const ordered = [
+    { name: 'c' },
+    { name: 'e' },
+    { name: 'h' },
+    { name: 'i' },
+    { name: 'o' },
+    { name: 'p' },
+    { name: 'r' },
+    { name: 'r' },
+    { name: 't' },
+  ];
+
+  expect(unordered.sort(byName)).toEqual(ordered);
+
 });

@@ -8,6 +8,7 @@ import activities from '../content/index';
 import tags from '../content/tags';
 import groups from '../content/groups';
 import {
+  alphabeticallyAtKey,
   toFlatten,
   toObjectWithValueAtKey,
   toObjectsWithValueAtKey,
@@ -24,6 +25,7 @@ const toTags = toValueAtKey('tags');
 const toGroup = toValueAtKey('group');
 const toTagWithSlug = toObjectWithValueAtKey(tags, 'slug');
 const toGroupWithSlug = toObjectWithValueAtKey(groups, 'slug');
+const byTitle = alphabeticallyAtKey('title');
 
 const styles = {
   chip: {
@@ -57,12 +59,14 @@ const Austin = (props) => {
     .reduce(toFlatten)
     .filter(toUnique)
     .map(toTagWithSlug)
-    .filter(toObjects);
+    .filter(toObjects)
+    .sort(byTitle);
 
   const austinGroups = austinTags
     .map(toGroup)
     .filter(toUnique)
-    .map(toGroupWithSlug);
+    .map(toGroupWithSlug)
+    .sort(byTitle);
 
   return (
     <div>
@@ -88,7 +92,7 @@ const Austin = (props) => {
         </div>
       </Drawer>
       <TripList
-        items={filteredItems}
+        items={filteredItems.sort(byTitle)}
         showCompleted={showCompleted}
       />
     </div>

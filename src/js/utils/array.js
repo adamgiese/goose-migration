@@ -35,9 +35,16 @@ export function toTruthy(element) {
   return Boolean(element);
 }
 
+// sort
+
+export function alphabeticallyAtKey(key) {
+  return (a, b) => a[key].toLowerCase().localeCompare(b[key].toLowerCase());
+}
+
 // export
 
 export default {
+  alphabeticallyAtKey,
   toUnique,
   toValueAtKey,
   toFlatten,
