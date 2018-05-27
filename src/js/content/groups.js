@@ -12,6 +12,10 @@ const groups = [
     slug: 'distance',
   },
   {
+    title: 'Alcohol',
+    slug: 'alcohol',
+  },
+  {
     title: 'Misc.',
     slug: undefined,
   },

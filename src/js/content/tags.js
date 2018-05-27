@@ -42,6 +42,22 @@ const tags = [
   {
     title: 'Alcohol',
     slug: 'alcohol',
+    group: 'alcohol',
+  },
+  {
+    title: 'Brewery',
+    slug: 'alcohol--brewery',
+    group: 'alcohol',
+  },
+  {
+    title: 'Cidery',
+    slug: 'alcohol--cidery',
+    group: 'alcohol',
+  },
+  {
+    title: 'Distillery',
+    slug: 'alcohol--distillery',
+    group: 'alcohol',
   },
   {
     title: 'Short Drive',
