@@ -1,0 +1,16 @@
+backend:
+  name: github
+  repo: adamgiese/goose-migration
+  branch: master
+media_folder: "media"
+collections:
+  - name: "activity"
+    label: "Activity"
+    folder: "_activities"
+    create: true
+    format: "json"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields: # The fields for each document, usually in front matter
+    - {label: "Layout", name: "layout", widget: "hidden", default: "blog"}
+    - {label: "Title", name: "title", widget: "string"}
+    - {label: "Ugh", name: "ugh", widget: "boolean"}
