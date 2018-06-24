@@ -1,7 +1,7 @@
 backend:
   name: github
   repo: adamgiese/goose-migration
-  branch: master
+  branch: content
 media_folder: "media"
 collections:
   - name: "activity"
